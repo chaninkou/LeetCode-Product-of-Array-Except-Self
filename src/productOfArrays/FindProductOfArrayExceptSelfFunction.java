@@ -4,32 +4,27 @@ public class FindProductOfArrayExceptSelfFunction {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
         
-        // The first element will be 1 since we know it does not multply itself
         int leftProduct = 1;
         
-        // When its 0, we just store 1, starting from 1, we multiply all the number before current index (not include current index)
-        for(int i = 0; i < nums.length; i++){
-            // Starting from 1, we multiply all the number before current index (not include current index)
-            if(i > 0){
-                leftProduct = leftProduct * nums[i - 1];
-            }
+        // Since the first element have nothing on the left side
+        result[0] = 1;
+        
+        for(int i = 1; i < nums.length; i++){
+        	// This will get whatever product of the left side only
+            leftProduct *= nums[i - 1];
             
-            // Just add the leftProduct to the result
             result[i] = leftProduct;
         }
         
-        // The last element will be 1 since we know it does not multply itself
         int rightProduct = 1;
         
-        
-        for(int j = nums.length - 1; j >= 0; j--){
-            // Starting from second to last element, we multiply all the number after current index (not include current index)
-            if(j < nums.length - 1){
-                rightProduct = rightProduct * nums[j + 1];
-            }
+        // Does not start from last index since there is nothing on the right side
+        for(int j = nums.length - 2; j >= 0; j--){
+        	// Will get whatever product from right
+            rightProduct *= nums[j + 1];
             
-            // With result[j] being leftProduct, now multiply the rightProduct to get the solution for each index
-            result[j] = result[j] * rightProduct;
+            // With the product of right, multiply the left product now
+            result[j] *= rightProduct;
         }
         
         return result;
