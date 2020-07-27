@@ -1,4 +1,4 @@
-package productOfArrays;
+package leetcode238;
 
 public class FindProductOfArrayExceptSelfFunction {
     public int[] productExceptSelf(int[] nums) {
@@ -6,11 +6,11 @@ public class FindProductOfArrayExceptSelfFunction {
         
         int leftProduct = 1;
         
-        // Since the first element have nothing on the left side
+        // Nothing on the left side of first element
         result[0] = 1;
         
+        // Get product of everything on left side only, excluding current element
         for(int i = 1; i < nums.length; i++){
-        	// Get product of everything on left side only, excluding current element
             leftProduct *= nums[i - 1];
             
             result[i] = leftProduct;
@@ -19,10 +19,10 @@ public class FindProductOfArrayExceptSelfFunction {
         int rightProduct = 1;
         
         for(int j = nums.length - 2; j >= 0; j--){
-        	// Will get whatever product from right
+        	// Will get whatever product from right original array
             rightProduct *= nums[j + 1];
             
-            // With the product of right, multiply the left product from result
+            // With the product of right, multiply the left product from result array
             result[j] *= rightProduct;
         }
         

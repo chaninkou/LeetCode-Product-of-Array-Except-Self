@@ -1,4 +1,4 @@
-package productOfArrays;
+package leetcode238;
 
 import java.util.Arrays;
 
