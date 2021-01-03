@@ -6,7 +6,7 @@ public class FindProductOfArrayExceptSelfFunction {
         
         int leftProduct = 1;
         
-        // Nothing on the left side of first element
+        // base case
         result[0] = 1;
         
         // Get product of everything on left side only, excluding current element
@@ -18,6 +18,7 @@ public class FindProductOfArrayExceptSelfFunction {
         
         int rightProduct = 1;
         
+        // Get product of right side and multiply by left side
         for(int j = nums.length - 2; j >= 0; j--){
         	// Will get whatever product from right original array
             rightProduct *= nums[j + 1];
